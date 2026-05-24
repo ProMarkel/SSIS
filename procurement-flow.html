@@ -5,6 +5,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>采购业务全周期流程 - SSIS 知识库</title>
 <style>
+  /* ========== Print Styles - Remove header/footer ========== */
+  @media print {
+    @page {
+      margin: 0;
+      size: A4;
+    }
+
+    /* Hide nav and other screen-only elements */
+    .kb-nav, nav, header, footer, .phase-nav-print {
+      display: none !important;
+    }
+
+    /* Add page numbers via CSS counter */
+    body {
+      counter-reset: page;
+    }
+    .print-page-num {
+      display: block !important;
+      position: running(pageNum);
+      text-align: right;
+      font-size: 9pt;
+      color: #888;
+    }
+    @page @bottom-right {
+      content: counter(page);
+      font-size: 9pt;
+      color: #888;
+    }
+  }
+
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap');
 
   /* ========== Navbar - Blue Background (matching index.html) ========== */
@@ -37,7 +67,7 @@
     display: block;
   }
   .kb-nav-brand-text {
-    font-size: 16px;
+    font-size: 22px;
     font-weight: 700;
     color: #ffffff;
     letter-spacing: 0.5px;
@@ -58,7 +88,7 @@
   .kb-nav-links a {
     color: rgba(255,255,255,0.75);
     text-decoration: none;
-    font-size: 14px;
+    font-size: 19px;
     font-weight: 500;
     padding: 8px 16px;
     border-radius: 6px;
@@ -136,7 +166,7 @@
     background: var(--bg);
     color: var(--text);
     line-height: 1.7;
-    font-size: 14px;
+    font-size: 20px;
   }
   .container {
     max-width: 1200px;
@@ -144,21 +174,21 @@
     padding: 40px 24px 80px;
   }
   h1 {
-    font-size: 28px;
+    font-size: 40px;
     font-weight: 700;
     margin-bottom: 6px;
     color: var(--text);
     letter-spacing: -0.5px;
   }
   .subtitle {
-    font-size: 15px;
+    font-size: 22px;
     color: var(--text-secondary);
     margin-bottom: 40px;
     padding-bottom: 24px;
     border-bottom: 1px solid var(--border);
   }
   .section-title {
-    font-size: 18px;
+    font-size: 26px;
     font-weight: 600;
     margin: 40px 0 16px;
     display: flex;
@@ -172,13 +202,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 600;
     flex-shrink: 0;
   }
   .phase-label {
     display: inline-block;
-    font-size: 11px;
+    font-size: 16px;
     font-weight: 600;
     padding: 2px 8px;
     border-radius: 4px;
@@ -197,16 +227,16 @@
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 16px;
+    padding: 22px 16px;
     text-align: center;
   }
   .overview-card .num {
-    font-size: 28px;
+    font-size: 40px;
     font-weight: 700;
     line-height: 1.2;
   }
   .overview-card .label {
-    font-size: 12px;
+    font-size: 18px;
     color: var(--text-secondary);
     margin-top: 4px;
   }
@@ -228,10 +258,10 @@
   }
   .flow-node {
     min-width: 130px;
-    padding: 10px 14px;
+    padding: 10px 12px;
     border-radius: var(--radius-sm);
     text-align: center;
-    font-size: 13px;
+    font-size: 17px;
     font-weight: 500;
     position: relative;
     flex-shrink: 0;
@@ -244,7 +274,7 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   }
   .flow-node .node-sub {
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 400;
     opacity: 0.75;
     margin-top: 2px;
@@ -252,9 +282,9 @@
   .flow-arrow {
     display: flex;
     align-items: center;
-    padding: 0 6px;
+    padding: 0 3px;
     color: var(--text-tertiary);
-    font-size: 18px;
+    font-size: 20px;
     flex-shrink: 0;
   }
 
@@ -277,22 +307,22 @@
   }
   .phase-header:hover { background: var(--gray-50); }
   .phase-header .step-num {
-    width: 28px;
-    height: 28px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 13px;
+    font-size: 18px;
     font-weight: 700;
     color: white;
     flex-shrink: 0;
   }
   .phase-header .title-area { flex: 1; }
-  .phase-header .title-area h3 { font-size: 15px; font-weight: 600; line-height: 1.3; }
-  .phase-header .title-area .desc { font-size: 12px; color: var(--text-secondary); }
+  .phase-header .title-area h3 { font-size: 21px; font-weight: 600; line-height: 1.3; }
+  .phase-header .title-area .desc { font-size: 17px; color: var(--text-secondary); }
   .phase-header .toggle {
-    font-size: 18px;
+    font-size: 24px;
     color: var(--text-tertiary);
     transition: transform 0.2s;
   }
@@ -302,7 +332,7 @@
     overflow: hidden;
     transition: max-height 0.35s ease;
   }
-  .phase-body.open { max-height: 2000px; }
+  .phase-body.open { max-height: 4000px; }
   .phase-content {
     padding: 0 20px 20px;
     border-top: 1px solid var(--border-light);
@@ -313,14 +343,14 @@
     width: 100%;
     border-collapse: collapse;
     margin-top: 12px;
-    font-size: 13px;
+    font-size: 17px;
   }
   .detail-table th {
     text-align: left;
     font-weight: 500;
     padding: 10px 12px;
     background: var(--gray-50);
-    font-size: 12px;
+    font-size: 16px;
     color: var(--text-secondary);
     border-bottom: 1px solid var(--border);
   }
@@ -336,7 +366,7 @@
     display: inline-block;
     padding: 2px 8px;
     border-radius: 4px;
-    font-size: 11px;
+    font-size: 15px;
     font-weight: 500;
   }
   .tag-required { background: var(--red-50); color: var(--red-600); }
@@ -357,7 +387,7 @@
     padding: 14px 16px;
   }
   .sub-step-card h4 {
-    font-size: 13px;
+    font-size: 18px;
     font-weight: 600;
     margin-bottom: 6px;
   }
@@ -366,7 +396,7 @@
     padding: 0;
   }
   .sub-step-card ul li {
-    font-size: 12px;
+    font-size: 16px;
     color: var(--text-secondary);
     padding: 2px 0;
     padding-left: 16px;
@@ -377,8 +407,8 @@
     position: absolute;
     left: 0;
     top: 10px;
-    width: 6px;
-    height: 6px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     background: var(--gray-400);
   }
@@ -400,26 +430,26 @@
     flex-direction: column;
     align-items: center;
     gap: 4px;
-    min-width: 80px;
+    min-width: 100px;
   }
   .approval-avatar {
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 600;
     color: white;
   }
   .approval-name {
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 500;
     text-align: center;
   }
   .approval-role {
-    font-size: 11px;
+    font-size: 14px;
     color: var(--text-tertiary);
   }
   .approval-arrow {
@@ -450,9 +480,9 @@
     border: 1.5px dashed;
   }
   .decision-label {
-    font-size: 13px;
+    font-size: 18px;
     font-weight: 500;
-    min-width: 80px;
+    min-width: 100px;
   }
   .decision-paths {
     display: flex;
@@ -463,7 +493,7 @@
     flex: 1;
     padding: 8px 12px;
     border-radius: 6px;
-    font-size: 12px;
+    font-size: 16px;
     text-align: center;
     border: 1px solid;
   }
@@ -475,7 +505,7 @@
     border-radius: var(--radius-sm);
     padding: 14px 18px;
     margin-top: 24px;
-    font-size: 13px;
+    font-size: 17px;
     color: var(--amber-800);
   }
   .note-box strong { font-weight: 600; }
@@ -483,7 +513,7 @@
   /* Print */
   @media print {
     @page { size: A3; margin: 12mm 10mm 15mm 10mm; }
-    body { background: #fff; font-size: 10pt; }
+    body { background: #fff; font-size: 14pt; }
     .kb-nav { display: none; }
     .container { max-width: 100% !important; padding: 0; margin: 0 auto; }
     .phase-body { max-height: none !important; }
@@ -496,9 +526,9 @@
     .phase-section { break-inside: avoid; break-before: auto; }
     .sla-summary { break-inside: avoid; break-before: auto; }
     .overview-grid { gap: 8px; }
-    .flow-node { min-width: 120px; }
-    .detail-table { font-size: 9pt; }
-    .detail-table th, .detail-table td { padding: 6px 8px; }
+    .flow-node { min-width: 115px; }
+    .detail-table { font-size: 10pt; }
+    .detail-table th, .detail-table td { padding: 4px 6px; }
   }
 
   /* Responsive */
@@ -506,7 +536,7 @@
     .kb-nav { padding: 0 16px; }
     .kb-nav-inner { gap: 20px; }
     .kb-nav-brand-text { display: none; }
-    .kb-nav-links a { padding: 8px 12px; font-size: 13px; }
+    .kb-nav-links a { padding: 8px 12px; font-size: 16px; }
     .overview-grid { grid-template-columns: repeat(2, 1fr); }
     .sub-steps { grid-template-columns: 1fr; }
     .approval-chain { flex-wrap: wrap; justify-content: center; }
@@ -562,43 +592,43 @@
   <div class="flow-container">
     <div class="flow-row" style="justify-content: center; gap: 0;">
       <div class="flow-node" style="background:var(--purple-50);border-color:var(--purple-100);color:var(--purple-800);">
-        <div style="font-size:11px;opacity:0.5;margin-bottom:2px;">STEP 01</div>
+        <div style="font-size:14px;opacity:0.5;margin-bottom:2px;">STEP 01</div>
         需求申请
         <div class="node-sub">采购申请</div>
       </div>
       <div class="flow-arrow">&#10145;</div>
       <div class="flow-node" style="background:var(--blue-50);border-color:var(--blue-100);color:var(--blue-800);">
-        <div style="font-size:11px;opacity:0.5;margin-bottom:2px;">STEP 02</div>
+        <div style="font-size:14px;opacity:0.5;margin-bottom:2px;">STEP 02</div>
         申购审批
         <div class="node-sub">部门/采购/财务/校董</div>
       </div>
       <div class="flow-arrow">&#10145;</div>
       <div class="flow-node" style="background:var(--teal-50);border-color:var(--teal-100);color:var(--teal-800);">
-        <div style="font-size:11px;opacity:0.5;margin-bottom:2px;">STEP 03</div>
+        <div style="font-size:14px;opacity:0.5;margin-bottom:2px;">STEP 03</div>
         询价比价
         <div class="node-sub">货比两家/比价审批</div>
       </div>
       <div class="flow-arrow">&#10145;</div>
       <div class="flow-node" style="background:var(--coral-50);border-color:var(--coral-100);color:var(--coral-800);">
-        <div style="font-size:11px;opacity:0.5;margin-bottom:2px;">STEP 04</div>
+        <div style="font-size:14px;opacity:0.5;margin-bottom:2px;">STEP 04</div>
         采购执行
-        <div class="node-sub">合同/下单/交付</div>
+        <div class="node-sub">合同/预付审批/下单</div>
       </div>
       <div class="flow-arrow">&#10145;</div>
       <div class="flow-node" style="background:var(--green-50);border-color:var(--green-100);color:var(--green-800);">
-        <div style="font-size:11px;opacity:0.5;margin-bottom:2px;">STEP 05</div>
+        <div style="font-size:14px;opacity:0.5;margin-bottom:2px;">STEP 05</div>
         验收入库
         <div class="node-sub">到货/核对/入库</div>
       </div>
       <div class="flow-arrow">&#10145;</div>
       <div class="flow-node" style="background:var(--amber-50);border-color:var(--amber-100);color:var(--amber-800);">
-        <div style="font-size:11px;opacity:0.5;margin-bottom:2px;">STEP 06</div>
+        <div style="font-size:14px;opacity:0.5;margin-bottom:2px;">STEP 06</div>
         结算批款
         <div class="node-sub">材料准备/财务批款</div>
       </div>
       <div class="flow-arrow">&#10145;</div>
       <div class="flow-node" style="background:var(--pink-50);border-color:var(--pink-100);color:var(--pink-800);">
-        <div style="font-size:11px;opacity:0.5;margin-bottom:2px;">STEP 07</div>
+        <div style="font-size:14px;opacity:0.5;margin-bottom:2px;">STEP 07</div>
         付款归档
         <div class="node-sub">执行付款/凭证归档</div>
       </div>
@@ -625,7 +655,7 @@
         <table class="detail-table">
           <thead><tr><th style="width:120px;">申请要素</th><th>说明</th><th style="width:70px;">性质</th></tr></thead>
           <tbody>
-            <tr><td style="font-weight:500;">采购分类</td><td>商品采购 / 服务采购</td><td><span class="tag tag-required">必填</span></td></tr>
+            <tr><td style="font-weight:500;">采购分类</td><td>商品采购 / 服务采购 / 设备采购 / 维保采购</td><td><span class="tag tag-required">必填</span></td></tr>
             <tr><td style="font-weight:500;">申购方式</td><td>周申购（定期批量）/ 临时申购（即时需求）</td><td><span class="tag tag-required">必填</span></td></tr>
             <tr><td style="font-weight:500;">物品明细</td><td>名称、规格、数量、预估单价、预估总价</td><td><span class="tag tag-required">必填</span></td></tr>
             <tr><td style="font-weight:500;">预算科目</td><td>归属部门预算、项目编号、预算余额确认</td><td><span class="tag tag-required">必填</span></td></tr>
@@ -640,7 +670,7 @@
           <div class="decision-paths">
             <div class="decision-path" style="background:var(--green-50);border-color:var(--green-100);color:var(--green-800);"><strong>单价&lt;5,000 且 总价&lt;20,000</strong><br>需要报价单</div>
             <div class="decision-path" style="background:var(--amber-50);border-color:var(--amber-100);color:var(--amber-800);"><strong>单价&ge;5,000 或 总价&ge;20,000</strong><br>必须要有合同</div>
-            <div class="decision-path" style="background:var(--coral-50);border-color:var(--coral-100);color:var(--coral-800);"><strong>总价 &ge; 50,000</strong><br>额外增加集团总部审批</div>
+            <div class="decision-path" style="background:var(--coral-50);border-color:var(--coral-100);color:var(--coral-800);"><strong>设备及维保采购 且 总价 &ge; 50,000</strong><br>额外增加集团总部审批</div>
           </div>
         </div>
         <div class="note-box" style="margin-top:14px;">
@@ -886,7 +916,7 @@
     </div>
     <div class="phase-body">
       <div class="phase-content">
-        <h4 style="font-size:14px;font-weight:600;margin:16px 0 10px;">结算材料清单</h4>
+        <h4 style="font-size:19px;font-weight:600;margin:16px 0 10px;">结算材料清单</h4>
         <table class="detail-table">
           <thead><tr><th style="width:140px;">材料名称</th><th>说明</th><th style="width:70px;">性质</th></tr></thead>
           <tbody>
@@ -899,7 +929,7 @@
             <tr><td style="font-weight:500;">费用报销单</td><td>填写完整，包含费用类别、金额、报销事由、部门/项目归属（现金采购时必须）</td><td><span class="tag tag-optional">选填</span></td></tr>
           </tbody>
         </table>
-        <h4 style="font-size:14px;font-weight:600;margin:20px 0 10px;">结算审核流程</h4>
+        <h4 style="font-size:19px;font-weight:600;margin:20px 0 10px;">结算审核流程</h4>
         <div class="approval-chain">
           <div class="approval-node"><div class="approval-avatar" style="background:var(--amber-600);">需</div><div class="approval-name">需求人</div><div class="approval-role">采购完成</div></div>
           <div class="approval-arrow"></div>
@@ -983,7 +1013,7 @@
           <tr><td style="font-weight:500;color:var(--purple-600);">需求申请</td><td>填写采购申请单</td><td>需求确认 2 个工作日内</td><td>需求人</td></tr>
           <tr><td style="font-weight:500;color:var(--blue-600);">申购审批</td><td>多级审批流转</td><td>5 - 10 个工作日</td><td>各级审批人</td></tr>
           <tr><td style="font-weight:500;color:var(--teal-600);">询价比价</td><td>询价、比价、审批</td><td>3 - 5 个工作日</td><td>采购执行 / 财务部</td></tr>
-          <tr><td style="font-weight:500;color:var(--coral-600);">采购执行</td><td>合同签订、下单、跟进</td><td>视合同交期<br><span style="font-size:12px;color:var(--gray-500);">参考：白名单非定制 3-5 工作日，普通定制 10-15 工作日</span></td><td>采购执行</td></tr>
+          <tr><td style="font-weight:500;color:var(--coral-600);">采购执行</td><td>合同签订、下单、跟进</td><td>视合同交期<br><span style="font-size:16px;color:var(--gray-500);">参考：白名单非定制 3-5 工作日，普通定制 10-15 工作日</span></td><td>采购执行</td></tr>
           <tr><td style="font-weight:500;color:var(--green-600);">验收入库</td><td>到货清点、质量验收、入库</td><td>到货后 2 个工作日内</td><td>需求人 / 仓管员</td></tr>
           <tr><td style="font-weight:500;color:var(--amber-600);">结算批款</td><td>材料准备、审核流转</td><td>5 - 10 个工作日</td><td>经办人 / 财务部</td></tr>
           <tr><td style="font-weight:500;color:var(--pink-600);">付款归档</td><td>付款执行、凭证编制、材料归档</td><td>审核通过后 5 个工作日</td><td>财务部</td></tr>

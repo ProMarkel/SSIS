@@ -257,11 +257,11 @@
     justify-content: center;
   }
   .flow-node {
-    min-width: 130px;
-    padding: 10px 12px;
+    min-width: 118px;
+    padding: 8px 10px;
     border-radius: var(--radius-sm);
     text-align: center;
-    font-size: 17px;
+    font-size: 15px;
     font-weight: 500;
     position: relative;
     flex-shrink: 0;
@@ -274,7 +274,7 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   }
   .flow-node .node-sub {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 400;
     opacity: 0.75;
     margin-top: 2px;
@@ -282,9 +282,9 @@
   .flow-arrow {
     display: flex;
     align-items: center;
-    padding: 0 3px;
+    padding: 0 2px;
     color: var(--text-tertiary);
-    font-size: 20px;
+    font-size: 18px;
     flex-shrink: 0;
   }
 
@@ -526,7 +526,7 @@
     .phase-section { break-inside: avoid; break-before: auto; }
     .sla-summary { break-inside: avoid; break-before: auto; }
     .overview-grid { gap: 8px; }
-    .flow-node { min-width: 115px; }
+    .flow-node { min-width: 105px; }
     .detail-table { font-size: 10pt; }
     .detail-table th, .detail-table td { padding: 4px 6px; }
   }
@@ -592,43 +592,43 @@
   <div class="flow-container">
     <div class="flow-row" style="justify-content: center; gap: 0;">
       <div class="flow-node" style="background:var(--purple-50);border-color:var(--purple-100);color:var(--purple-800);">
-        <div style="font-size:14px;opacity:0.5;margin-bottom:2px;">STEP 01</div>
+        <div style="font-size:13px;opacity:0.5;margin-bottom:2px;">STEP 01</div>
         需求申请
         <div class="node-sub">采购申请</div>
       </div>
       <div class="flow-arrow">&#10145;</div>
       <div class="flow-node" style="background:var(--blue-50);border-color:var(--blue-100);color:var(--blue-800);">
-        <div style="font-size:14px;opacity:0.5;margin-bottom:2px;">STEP 02</div>
+        <div style="font-size:13px;opacity:0.5;margin-bottom:2px;">STEP 02</div>
         申购审批
         <div class="node-sub">部门/采购/财务/校董</div>
       </div>
       <div class="flow-arrow">&#10145;</div>
       <div class="flow-node" style="background:var(--teal-50);border-color:var(--teal-100);color:var(--teal-800);">
-        <div style="font-size:14px;opacity:0.5;margin-bottom:2px;">STEP 03</div>
+        <div style="font-size:13px;opacity:0.5;margin-bottom:2px;">STEP 03</div>
         询价比价
         <div class="node-sub">货比两家/比价审批</div>
       </div>
       <div class="flow-arrow">&#10145;</div>
       <div class="flow-node" style="background:var(--coral-50);border-color:var(--coral-100);color:var(--coral-800);">
-        <div style="font-size:14px;opacity:0.5;margin-bottom:2px;">STEP 04</div>
+        <div style="font-size:13px;opacity:0.5;margin-bottom:2px;">STEP 04</div>
         采购执行
         <div class="node-sub">合同/预付审批/下单</div>
       </div>
       <div class="flow-arrow">&#10145;</div>
       <div class="flow-node" style="background:var(--green-50);border-color:var(--green-100);color:var(--green-800);">
-        <div style="font-size:14px;opacity:0.5;margin-bottom:2px;">STEP 05</div>
+        <div style="font-size:13px;opacity:0.5;margin-bottom:2px;">STEP 05</div>
         验收入库
         <div class="node-sub">到货/核对/入库</div>
       </div>
       <div class="flow-arrow">&#10145;</div>
       <div class="flow-node" style="background:var(--amber-50);border-color:var(--amber-100);color:var(--amber-800);">
-        <div style="font-size:14px;opacity:0.5;margin-bottom:2px;">STEP 06</div>
+        <div style="font-size:13px;opacity:0.5;margin-bottom:2px;">STEP 06</div>
         结算批款
         <div class="node-sub">材料准备/财务批款</div>
       </div>
       <div class="flow-arrow">&#10145;</div>
       <div class="flow-node" style="background:var(--pink-50);border-color:var(--pink-100);color:var(--pink-800);">
-        <div style="font-size:14px;opacity:0.5;margin-bottom:2px;">STEP 07</div>
+        <div style="font-size:13px;opacity:0.5;margin-bottom:2px;">STEP 07</div>
         付款归档
         <div class="node-sub">执行付款/凭证归档</div>
       </div>
@@ -838,9 +838,8 @@
           <div class="sub-step-card" style="border-color:var(--amber-100);">
             <h4 style="color:var(--amber-800);">预付申请</h4>
             <ul>
-              <li>预付比例一般不超过合同金额的 30%</li>
+              <li>预付比例按签订合同约定申请（包括全款预付）</li>
               <li>预付需附加：合同复印件、预付申请表</li>
-              <li>大额预付（&gt; 30%）需校董部审批（如需）</li>
               <li>财务审核后执行预付，登记预付台账</li>
             </ul>
           </div>
@@ -853,6 +852,14 @@
               <li>采购进度跟踪表</li>
             </ul>
           </div>
+        </div>
+        <div class="note-box" style="margin-top:14px;background:var(--teal-50);border-color:var(--teal-100);color:var(--teal-900);">
+          <strong>非合同采购执行说明：</strong><br><br>
+          <strong>一、报价单采购</strong><br>
+          单价 &lt; 5,000 且 总价 &lt; 20,000 的，可仅提供报价单（报价单要素参照合同要素：标的、金额、交期、付款方式、违约条款），报价单对公支付仍需经由财务部审核并批准付款。<br><br>
+          <strong>二、备用金采购</strong><br>
+          单价 &lt; 5,000 且 总价 &lt; 20,000 的，无法进行对公支付的，可使用备用金采购流程；备用金采购须在申购申请中注明，申购审批通过后，可直接下单采购执行。<br>
+          ※ 备用金申请 / 核销 / 还款流程，详见《备用金制度》。
         </div>
       </div>
     </div>
@@ -1026,7 +1033,7 @@
     <strong>注意事项：</strong><br>
     1）全流程关键单据均需保留纸质原件 + 电子扫描件，归档期限为完成后 5 个工作日；<br>
     2）大额采购（&gt; 50,000 元）需提前 10 个工作日提交申请，预留充足审批时间；<br>
-    3）预付比例超过 30% 或合同金额 &gt; 100,000 元时，须由校董部单独审批预付申请；<br>
+    3）合同约定的预付申请，由财务部审核后执行，登记预付台账；<br>
     4）采购台账按月汇总，与财务应付账款科目进行对账，确保账实相符。
   </div>
 </div>
